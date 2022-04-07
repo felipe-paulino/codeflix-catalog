@@ -79,7 +79,7 @@ public class CategoryTest
 
         action.Should()
             .Throw<EntityValidationException>()
-            .WithMessage("Name should not be empty or null");
+            .WithMessage("Name should not be null or empty");
     }
 
     [Fact(DisplayName = nameof(InstantiateErrorWhenDescriptionIsNull))]
@@ -207,7 +207,7 @@ public class CategoryTest
 
         action.Should()
             .Throw<EntityValidationException>()
-            .WithMessage("Name should not be empty or null");
+            .WithMessage("Name should not be null or empty");
     }
 
     [Fact(DisplayName = nameof(UpdateErrorWhenNameGreaterThan255Characters))]
