@@ -36,6 +36,5 @@ public class CreateCategory : ICreateCategory
             category.IsActive,
             category.CreatedAt
         );
-
     }
 }
