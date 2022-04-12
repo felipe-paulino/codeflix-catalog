@@ -96,6 +96,7 @@ public class CreateCategoryTest
         output.Should().NotBe(default(DateTime));
     }
 
+
     [Fact(DisplayName = nameof(CreateCategoryWithOnlyNameAndDescription))]
     [Trait("Application", "CreateCategory - Use Cases")]
     public async Task CreateCategoryWithOnlyNameAndDescription()
@@ -134,6 +135,7 @@ public class CreateCategoryTest
         output.Id.Should().NotBeEmpty();
         output.Should().NotBe(default(DateTime));
     }
+
 
     [Theory(DisplayName = nameof(ThrowWhenCantInstantiateCategory))]
     [Trait("Application", "CreateCategory - Use Cases")]
