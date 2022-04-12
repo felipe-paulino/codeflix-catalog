@@ -80,14 +80,14 @@ public class DeleteCategoryTest
         var task = async () => await useCase.Handle(input, CancellationToken.None);
 
         await task.Should()
-            .ThrowAsync<NotFoundException>()
+            .ThrowAsync<NotFoundException>();
 
         repositoryMock.Verify(
             x => x.Get(
                 exampleGuid,
                 It.IsAny<CancellationToken>()
             ),
-            Times.Once
+            Times.Once()
         );
     }
 }
