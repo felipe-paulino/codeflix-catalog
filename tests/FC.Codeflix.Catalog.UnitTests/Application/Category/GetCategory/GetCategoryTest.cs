@@ -1,5 +1,4 @@
-﻿using FC.Codeflix.Catalog.Domain.Entity;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Moq;
 using System;
 using System.Threading;

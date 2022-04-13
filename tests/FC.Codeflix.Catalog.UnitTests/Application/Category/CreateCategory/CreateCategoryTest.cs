@@ -5,7 +5,6 @@ using FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category;
 using FluentAssertions;
 using Moq;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
