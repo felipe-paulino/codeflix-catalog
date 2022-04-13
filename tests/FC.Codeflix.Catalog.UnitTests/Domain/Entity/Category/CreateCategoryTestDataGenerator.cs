@@ -1,4 +1,4 @@
-﻿using FC.Codeflix.Catalog.UnitTests.Application.CreateCategory;
+﻿using FC.Codeflix.Catalog.UnitTests.Application.Category.CreateCategory;
 using System.Collections.Generic;
 
 namespace FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category;

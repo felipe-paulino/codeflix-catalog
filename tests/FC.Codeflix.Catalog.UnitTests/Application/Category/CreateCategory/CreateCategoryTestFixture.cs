@@ -1,35 +1,10 @@
-﻿using FC.Codeflix.Catalog.Application.Interfaces;
-using FC.Codeflix.Catalog.Application.UseCases.Category.CreateCategory;
-using FC.Codeflix.Catalog.Domain.Repository;
-using FC.Codeflix.Catalog.UnitTests.Common;
-using Moq;
-using System;
+﻿using FC.Codeflix.Catalog.Application.UseCases.Category.CreateCategory;
+using FC.Codeflix.Catalog.UnitTests.Application.Category.Common;
 using Xunit;
 
-namespace FC.Codeflix.Catalog.UnitTests.Application.CreateCategory;
-public class CreateCategoryTestFixture : BaseFixture
+namespace FC.Codeflix.Catalog.UnitTests.Application.Category.CreateCategory;
+public class CreateCategoryTestFixture : CategoryUseCasesBaseFixture
 {
-    public string GetValidCategoryName()
-    {
-        var categoryName = "";
-        while (categoryName.Length < 3)
-            categoryName = Faker.Commerce.Categories(1)[0];
-        if (categoryName.Length > 255)
-            categoryName = categoryName[..255];
-        return categoryName;
-    }
-
-    public string GetValidCategoryDescription()
-    {
-        var categoryDescription = Faker.Commerce.Categories(1)[0];
-        if (categoryDescription.Length > 255)
-            categoryDescription = categoryDescription[..255];
-        return categoryDescription;
-    }
-
-    public bool GetRandomBoolean()
-        => (new Random()).NextDouble() < 0.5;
-
     public CreateCategoryInput GetInput()
         => new(
             GetValidCategoryName(),
@@ -73,10 +48,6 @@ public class CreateCategoryTestFixture : BaseFixture
             invalidInputLongDescription.Description = $"{invalidInputLongDescription.Description} {Faker.Commerce.ProductDescription()}";
         return invalidInputLongDescription;
     }
-
-    public Mock<ICategoryRepository> GetRepositoryMock() => new();
-
-    public Mock<IUnitOfWork> GetUnitOfWorkMock() => new();
 }
 
 [CollectionDefinition(nameof(CreateCategoryTestFixture))]

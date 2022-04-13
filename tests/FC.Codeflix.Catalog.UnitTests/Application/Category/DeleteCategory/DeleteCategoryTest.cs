@@ -8,7 +8,7 @@ using UseCase = FC.Codeflix.Catalog.Application.UseCases.Category.DeleteCategory
 using FC.Codeflix.Catalog.Application.UseCases.Category.DeleteCategory;
 using FC.Codeflix.Catalog.Application.Exceptions;
 
-namespace FC.Codeflix.Catalog.UnitTests.Application.DeleteCategory;
+namespace FC.Codeflix.Catalog.UnitTests.Application.Category.DeleteCategory;
 
 [Collection(nameof(DeleteCategoryTestFixture))]
 public class DeleteCategoryTest
@@ -35,7 +35,7 @@ public class DeleteCategoryTest
 
         var input = new DeleteCategoryInput(exampleCategory.Id);
         var useCase = new UseCase.DeleteCategory(repositoryMock.Object, unitOfWorkMock.Object);
-        
+
 
         await useCase.Handle(input, CancellationToken.None);
 
@@ -58,7 +58,7 @@ public class DeleteCategoryTest
 
         unitOfWorkMock.Verify(x => x.Commit(
             It.IsAny<CancellationToken>()
-           ), 
+           ),
            Times.Once
         );
     }

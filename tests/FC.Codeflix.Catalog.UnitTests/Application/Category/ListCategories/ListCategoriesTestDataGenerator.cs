@@ -1,7 +1,7 @@
 ﻿using FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
 using System.Collections.Generic;
 
-namespace FC.Codeflix.Catalog.UnitTests.Application.ListCategories;
+namespace FC.Codeflix.Catalog.UnitTests.Application.Category.ListCategories;
 public class ListCategoriesTestDataGenerator
 {
     public static IEnumerable<object[]> GetInputWithoutParameters(int times = 12)
@@ -13,30 +13,30 @@ public class ListCategoriesTestDataGenerator
             switch (i % 6)
             {
                 case 0:
-                    yield return new object[] { 
-                        new ListCategoriesInput() 
+                    yield return new object[] {
+                        new ListCategoriesInput()
                     };
                     break;
                 case 1:
-                    yield return new object[] { 
-                        new ListCategoriesInput(inputExample.Page) 
+                    yield return new object[] {
+                        new ListCategoriesInput(inputExample.Page)
                     };
                     break;
                 case 2:
-                    yield return new object[] { 
+                    yield return new object[] {
                         new ListCategoriesInput(
                             inputExample.Page,
                             inputExample.PerPage
-                        ) 
+                        )
                     };
                     break;
                 case 3:
-                    yield return new object[] { 
+                    yield return new object[] {
                         new ListCategoriesInput(
                             inputExample.Page,
                             inputExample.PerPage,
                             inputExample.Search
-                        ) 
+                        )
                     };
                     break;
                 case 4:
