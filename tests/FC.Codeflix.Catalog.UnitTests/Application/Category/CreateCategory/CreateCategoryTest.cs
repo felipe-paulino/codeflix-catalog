@@ -1,7 +1,6 @@
 ﻿using FC.Codeflix.Catalog.Application.UseCases.Category.CreateCategory;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 using FC.Codeflix.Catalog.Domain.Exceptions;
-using FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category;
 using FluentAssertions;
 using Moq;
 using System;
