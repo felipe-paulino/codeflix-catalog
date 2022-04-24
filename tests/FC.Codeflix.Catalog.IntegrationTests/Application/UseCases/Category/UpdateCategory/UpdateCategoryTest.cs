@@ -12,7 +12,7 @@ using FC.Codeflix.Catalog.Application.Exceptions;
 using System;
 using FC.Codeflix.Catalog.Domain.Exceptions;
 
-namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.UpdateCategory;
+namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.UpdateCategory;
 
 [Collection(nameof(UpdateCategoryTestFixture))]
 public class UpdateCategoryTest

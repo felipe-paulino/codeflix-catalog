@@ -11,7 +11,7 @@ using Xunit;
 using InfraData = FC.Codeflix.Catalog.Infra.Data.EF;
 using UseCase = FC.Codeflix.Catalog.Application.UseCases.Category.DeleteCategory;
 
-namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.DeleteCategory;
+namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.DeleteCategory;
 
 [Collection(nameof(DeleteCategoryTestFixture))]
 public class DeleteCategoryTest

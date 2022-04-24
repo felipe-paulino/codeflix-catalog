@@ -1,12 +1,12 @@
 ﻿using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
-using FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.Common;
+using FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
-namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.ListCategories;
+namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.ListCategories;
 
 [CollectionDefinition(nameof(ListCategoriesTestFixture))]
 public class ListCategoriesTestFixtureCollection
@@ -50,7 +50,7 @@ public class ListCategoriesTestFixture : CategoryUseCasesBaseFixture
     public List<DomainEntity.Category> GetExampleCategoriesListWithExclusiveNamesAndDescriptions(int length = 10)
     {
         var categories = GetExampleCategoriesList(length);
-        for(int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++)
         {
             categories[i].Update(
                 categories[i].Name + i.ToString(),

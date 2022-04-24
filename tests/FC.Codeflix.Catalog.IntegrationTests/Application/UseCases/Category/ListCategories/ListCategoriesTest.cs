@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Xunit;
 using UseCase = FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
 
-namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.ListCategories;
+namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.ListCategories;
 
 [Collection(nameof(ListCategoriesTestFixture))]
 public class ListCategoriesTest

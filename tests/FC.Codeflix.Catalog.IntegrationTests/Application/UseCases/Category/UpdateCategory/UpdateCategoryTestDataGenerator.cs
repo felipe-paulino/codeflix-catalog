@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.UpdateCategory;
+using System.Collections.Generic;
 
-namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.UpdateCategory;
+namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.UpdateCategory;
 public class UpdateCategoryTestDataGenerator
 {
     public static IEnumerable<object[]> GetCategoriesToUpdate(int times = 10)

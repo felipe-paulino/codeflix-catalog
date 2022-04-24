@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using Xunit;
 using UseCase = FC.Codeflix.Catalog.Application.UseCases.Category.GetCategory;
 
-namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.GetCategory;
+namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.GetCategory;
 
 [Collection(nameof(GetCategoryTestFixture))]
 public class GetCategoryTest
 {
     private readonly GetCategoryTestFixture _fixture;
 
-    public GetCategoryTest(GetCategoryTestFixture fixture) 
+    public GetCategoryTest(GetCategoryTestFixture fixture)
         => _fixture = fixture;
 
     [Fact(DisplayName = nameof(GetCategory))]
@@ -47,7 +47,7 @@ public class GetCategoryTest
         var dbContext = _fixture.CreateDbContext();
         var repository = new CategoryRepository(dbContext);
         var exampleGuid = Guid.NewGuid();
-        var input = new UseCase.GetCategoryInput(exampleGuid);
+        var input = new GetCategoryInput(exampleGuid);
         var useCase = new UseCase.GetCategory(repository);
 
         var task = async () => await useCase.Handle(input, CancellationToken.None);

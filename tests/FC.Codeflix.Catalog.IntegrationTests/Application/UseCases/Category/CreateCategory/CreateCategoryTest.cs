@@ -10,14 +10,14 @@ using Xunit;
 using InfraEF = FC.Codeflix.Catalog.Infra.Data.EF;
 using UseCase = FC.Codeflix.Catalog.Application.UseCases.Category.CreateCategory;
 
-namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.CreateCategory;
+namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.CreateCategory;
 
 [Collection(nameof(CreateCategoryTestFixture))]
 public class CreateCategoryTest
 {
     private readonly CreateCategoryTestFixture _fixture;
 
-    public CreateCategoryTest(CreateCategoryTestFixture fixture) 
+    public CreateCategoryTest(CreateCategoryTestFixture fixture)
         => _fixture = fixture;
 
     [Fact(DisplayName = nameof(CreateCategory))]

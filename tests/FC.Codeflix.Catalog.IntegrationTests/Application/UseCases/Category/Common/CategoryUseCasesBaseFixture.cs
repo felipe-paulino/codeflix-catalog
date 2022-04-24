@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
-namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Application.UseCases.Category.Common;
+namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.Common;
 public class CategoryUseCasesBaseFixture : BaseFixture
 {
     public string GetValidCategoryName()
