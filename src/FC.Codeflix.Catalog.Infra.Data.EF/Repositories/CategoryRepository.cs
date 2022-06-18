@@ -47,19 +47,22 @@ public class CategoryRepository : ICategoryRepository
     }
 
     private IQueryable<Category> ApplyOrdering(
-        IQueryable<Category> categories, 
-        string orderBy, 
+        IQueryable<Category> categories,
+        string orderBy,
         SearchOrder order)
-    => (orderBy.ToLower(), order) switch
+    {
+        var orderedQuery = (orderBy.ToLower(), order) switch
         {
-            ("name", SearchOrder.Asc) => categories.OrderBy(x => x.Name),
-            ("name", SearchOrder.Desc) => categories.OrderByDescending(x => x.Name),
+            ("name", SearchOrder.Asc) => categories.OrderBy(x => x.Name).ThenBy(x => x.Id),
+            ("name", SearchOrder.Desc) => categories.OrderByDescending(x => x.Name).ThenByDescending(x => x.Id),
             ("createdat", SearchOrder.Asc) => categories.OrderBy(x => x.CreatedAt),
             ("createdat", SearchOrder.Desc) => categories.OrderByDescending(x => x.CreatedAt),
             ("id", SearchOrder.Asc) => categories.OrderBy(x => x.Id),
             ("id", SearchOrder.Desc) => categories.OrderByDescending(x => x.Id),
-            _ => categories.OrderBy(x => x.Name),
+            _ => categories.OrderBy(x => x.Name).ThenBy(x => x.Id)
         };
+        return orderedQuery.ThenBy(x => x.CreatedAt);
+    }
 
     public Task Update(Category aggregate, CancellationToken cancellationToken)
         => Task.FromResult(Categories.Update(aggregate));

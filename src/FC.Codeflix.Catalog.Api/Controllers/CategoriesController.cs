@@ -1,8 +1,11 @@
+using FC.Codeflix.Catalog.Api.ApiModels.Category;
 using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
 using FC.Codeflix.Catalog.Application.UseCases.Category.CreateCategory;
 using FC.Codeflix.Catalog.Application.UseCases.Category.DeleteCategory;
 using FC.Codeflix.Catalog.Application.UseCases.Category.GetCategory;
+using FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
 using FC.Codeflix.Catalog.Application.UseCases.Category.UpdateCategory;
+using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -61,10 +64,40 @@ public class CategoriesController : ControllerBase
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status422UnprocessableEntity)]
     public async Task<IActionResult> Update(
-        [FromBody] UpdateCategoryInput input,
+        [FromRoute] Guid id,
+        [FromBody] UpdateCategoryApiInput apiInput,
         CancellationToken cancellationToken
     )
     {
+        var input = new UpdateCategoryInput(
+            id, 
+            apiInput.Name, 
+            apiInput.Description, 
+            apiInput.IsActive
+        );
+        var output = await _mediator.Send(input, cancellationToken);
+        return Ok(output);
+    }
+
+
+    [HttpGet]
+    [ProducesResponseType(typeof(CategoryModelOutput), StatusCodes.Status200OK)]
+    public async Task<IActionResult> List(
+        CancellationToken cancellationToken,
+        [FromQuery] int? page = null,
+        [FromQuery] int? perPage = null,
+        [FromQuery] string? search = null,
+        [FromQuery] string? sort = null,
+        [FromQuery] SearchOrder? dir = null
+    )
+    {
+        var input = new ListCategoriesInput();
+        if (page is not null) input.Page = page.Value;
+        if (perPage is not null) input.PerPage = perPage.Value;
+        if (!String.IsNullOrWhiteSpace(search)) input.Search = search;
+        if (!String.IsNullOrWhiteSpace(sort)) input.Sort = sort;
+        if (dir is not null) input.Dir = dir.Value;
+
         var output = await _mediator.Send(input, cancellationToken);
         return Ok(output);
     }
