@@ -1,4 +1,5 @@
-﻿using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
+﻿using FC.Codeflix.Catalog.Api.ApiModels.Response;
+using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
 using FluentAssertions;
 using FluentAssertions.Extensions;
 using Microsoft.AspNetCore.Http;
@@ -26,18 +27,18 @@ public class GetCategoryApiTest : IDisposable
         await _fixture.Persistence.InsertList(exampleCategories);
         var exampleCategory = exampleCategories[10];
 
-        var (response, output) = await _fixture.ApiClient.Get<CategoryModelOutput>(
+        var (response, output) = await _fixture.ApiClient.Get<ApiResponse<CategoryModelOutput>>(
             $"/categories/{exampleCategory.Id}"
         );
 
         response.Should().NotBeNull();
         response!.StatusCode.Should().Be(HttpStatusCode.OK);
         output.Should().NotBeNull();
-        output!.Name.Should().Be(exampleCategory.Name);
-        output.Description.Should().Be(exampleCategory.Description);
-        output.IsActive.Should().Be(exampleCategory.IsActive);
-        output.Id.Should().Be(exampleCategory.Id);
-        output.CreatedAt.Should().BeCloseTo(exampleCategory.CreatedAt, 1.Milliseconds());
+        output!.Data.Name.Should().Be(exampleCategory.Name);
+        output.Data.Description.Should().Be(exampleCategory.Description);
+        output.Data.IsActive.Should().Be(exampleCategory.IsActive);
+        output.Data.Id.Should().Be(exampleCategory.Id);
+        output.Data.CreatedAt.Should().BeCloseTo(exampleCategory.CreatedAt, 1.Milliseconds());
     }
 
 
